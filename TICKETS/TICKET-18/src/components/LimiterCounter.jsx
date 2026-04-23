@@ -3,20 +3,16 @@ import { useState } from 'react'
 const MIN = 0
 const MAX = 10
 
-/**
- * LimitedCounter - demonstrates useState with boundary conditions,
- * disabled buttons, progress bar, and conditional messages
- */
+
 function LimitedCounter() {
     const [count, setCount] = useState(0)
 
-    // Progress percentage for the bar
     const progress = ((count - MIN) / (MAX - MIN)) * 100
 
     const increment = () => { if (count < MAX) setCount(count + 1) }
     const decrement = () => { if (count > MIN) setCount(count - 1) }
 
-    // Dynamic colour for count display
+
     const countColor =
         count === MAX ? 'text-[#ff5f7e]' :
             count === MIN ? 'text-[#38bdf8]' :
@@ -25,18 +21,16 @@ function LimitedCounter() {
     return (
         <div className="bg-[#1a1a24] border border-[#2e2e42] rounded-2xl p-8 flex flex-col gap-4">
 
-            {/* Header */}
+          
             <div>
                 <h2 className="text-white font-bold text-lg m-0">Limited Counter</h2>
                 <p className="text-[#8888aa] text-sm mt-1 m-0">Bounded between {MIN} and {MAX}</p>
             </div>
 
-            {/* Count Display */}
             <div className={`text-7xl font-black text-center tracking-tighter leading-none py-4 transition-colors ${countColor}`}>
                 {count}
             </div>
 
-            {/* Status Badge */}
             <div className="text-center min-h-[1.6rem]">
                 {count === MAX && (
                     <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#ff5f7e]/15 text-[#ff5f7e]">
@@ -55,7 +49,7 @@ function LimitedCounter() {
                 )}
             </div>
 
-            {/* Progress Bar */}
+            
             <div className="bg-[#2e2e42] rounded-full h-2 overflow-hidden">
                 <div
                     className="h-full rounded-full transition-all duration-300"
@@ -70,7 +64,6 @@ function LimitedCounter() {
                 <span>{MAX}</span>
             </div>
 
-            {/* Buttons — disabled at limits */}
             <div className="flex gap-3 justify-center">
                 <button
                     onClick={decrement}
